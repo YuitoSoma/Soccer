@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Keeper : MonoBehaviour
@@ -19,7 +17,7 @@ public class Keeper : MonoBehaviour
 		//変位を計算
 		float x = amplitude * Mathf.Sin(Time.time * speed);
 
-		//zを変位させたポジションに再設定
+		//xを変位させたポジションに再設定
 		transform.localPosition = startPosition + new Vector3(x, 0, 0);
 	}
 }
