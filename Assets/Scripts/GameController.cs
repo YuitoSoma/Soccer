@@ -39,12 +39,13 @@ public class GameController : MonoBehaviour
 
             case State.Play:
                 //　ボールが0になったらゲームオーバー
-                if (ball == 0) GameOver();
+                if (ball == -1)  GameOver();
                 break;
 
             case State.GameOver:
                 PlayerPrefs.SetInt("Score", goal);
-                Invoke("ReturnToTitle", 2.0f);
+                ReturnToTitle();
+                //Invoke("ReturnToTitle", 2.0f);
                 break;
         }
 
@@ -96,7 +97,9 @@ public class GameController : MonoBehaviour
     //　ラベルを更新
     void BallPossession()
     {
-        ballText.text = "Ball : " + ball;
+        int Ball = ball;
+        if (Ball < 0) Ball += 1;
+        ballText.text = "Ball : " + Ball;
     }
 
     //　ゴール数を計算
@@ -109,7 +112,7 @@ public class GameController : MonoBehaviour
     //　ボールを消費
     public void ConsumeBall()
     {
-        if (ball > 0) ball--;
+        if (ball >= 0)  ball--;
     }
 
     //　ボールの所持数
